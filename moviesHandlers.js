@@ -39,7 +39,7 @@ const getMovies = (req, res) => {
     });
 };
 
-const getMovieById = (req, res) => {
+const getMoviesById = (req, res) => {
   const id = parseInt(req.params.id);
 
   database
@@ -56,7 +56,7 @@ const getMovieById = (req, res) => {
       res.status(500).send("Error retrieving data from database");
     });
 };
-const postMovie = (req, res) => {
+const postMovies = (req, res) => {
   const { title, director, year, color, duration } = req.body;
 
   database
@@ -75,6 +75,6 @@ const postMovie = (req, res) => {
 
 module.exports = {
   getMovies,
-  getMovieById,
-  postMovie,
+  getMoviesById,
+  postMovies,
 };

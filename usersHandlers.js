@@ -29,13 +29,13 @@ const getUsersById = (req, res) => {
       res.status(500).send("Error retrieving data from database");
     });
 
-  const postUser = (req, res) => {
-    const { firstname, lastname, email, city } = req.body;
+  const postUsers = (req, res) => {
+    const { firstname, lastname, email, city, language } = req.body;
 
     database
       .query(
-        "INSERT INTO user(firstname,lastname, email, city) VALUES (?, ?, ?, ?)",
-        [firstname, lastname, email, city]
+        "INSERT INTO users(firstname,lastname, email, city) VALUES (?, ?, ?, ?)",
+        [firstname, lastname, email, city, language]
       )
       .then(([result]) => {
         res.location(`/api/user/${result.insertId}`).sendStatus(201);
@@ -49,6 +49,6 @@ const getUsersById = (req, res) => {
   module.exports = {
     getUsers,
     getUsersById,
-    postUser,
+    postUsers,
   };
 };
